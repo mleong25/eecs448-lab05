@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <h1>Delete Post</h1>
+    <form action="DeletePost.php" method="post">
+        <table>
+            <?php
+                $DB = new mysqli("mysql.eecs.ku.edu", "m765d813", "Aepe4ne9", "m765d813");
+
+                $query = "SELECT * FROM Posts;";
+                $result = $DB->query($query);
+                echo "<tr><th>Post ID</th><th>Content</th><th>Author ID</th><th>Delete?</th><tr>";
+                while ($row = $result->fetch_assoc()) {
+	    		    echo "<tr><td>" . $row["post_id"] . "</td><td>" . $row["content"] . "</td><td>" . $row["author_id"] . "</td><td><input type='checkbox' name='post[]' value=" . $row["post_id"] . "></td></tr>";
+                }
+
+                $result->free();
+                $DB->close();
+            ?>
+        </table>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

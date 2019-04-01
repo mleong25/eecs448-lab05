@@ -9,10 +9,10 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <form>
-        Username:<input type="text"/><br/>
-        <input type="text">
-        <input type="submit"/>
+    <form action="CreatePost.php" method="post">
+        Username:<input type="text" name="username" placeholder="username"/><br/>
+        Post:<textarea name="post" name ="post" style="width: 70%; height: 100px;">Type your post here</textarea><br/>
+        <input type="submit" value="Submit"/>
     </form>
 </body>
 </html>
